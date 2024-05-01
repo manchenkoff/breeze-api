@@ -56,3 +56,25 @@ task -a
 ```
 
 To auto-format your code use `task fmt` command and also `task lint` to check the code quality by running Larastan checks.
+
+## Production
+
+**Environment**
+
+To make sure that Laravel Sanctum will work on your production instance, make sure that you defined properly the following environment variables:
+
+```dotenv
+APP_KEY=base64:your_key_here    # Generate a new key using `php artisan key:generate --show`
+FRONTEND_URL=https://domain.com # Your frontend Nuxt application URL
+SESSION_DOMAIN=.domain.com      # Your domain should start with a dot to support all subdomains like www.* or frontend.*
+```
+
+_💡 Keep in mind, that `SESSION_DOMAIN` is not applicable for `localhost` and should not be used during development with the value other than `null`._
+
+**Multiple apps**
+
+If you have multiple frontend applications (e.g. public and admin apps), you can define the `SANCTUM_STATEFUL_DOMAINS` environment variable to allow multiple domains to access the same session.
+
+```dotenv
+SANCTUM_STATEFUL_DOMAINS=domain.com,backoffice.domain.com,admin.domain.com
+```
