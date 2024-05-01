@@ -6,8 +6,8 @@ This repository is a template for Laravel projects based on Sail environment to 
 
 You can use this project to integrate with one of these frontend applications:
 
--   [Breeze Next](https://github.com/laravel/breeze-next/) (React)
--   [Breeze Nuxt](https://github.com/manchenkoff/breeze-nuxt) (Nuxt)
+-   [Breeze Next](https://github.com/laravel/breeze-next/) (React/Next)
+-   [Breeze Nuxt](https://github.com/manchenkoff/breeze-nuxt) (Vue/Nuxt)
 
 ## Prerequisites
 
