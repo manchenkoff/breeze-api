@@ -100,8 +100,8 @@ tasks:
     cmds:
       - task: run
         vars: { cmd: artisan clear-compiled }
-      - task: run
-        vars: { cmd: artisan ide-helper:generate }
+      # - task: run
+      #   vars: { cmd: artisan ide-helper:generate }
       - task: run
         vars: { cmd: artisan ide-helper:models -W }
       - task: fmt
