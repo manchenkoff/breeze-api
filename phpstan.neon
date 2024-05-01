@@ -7,5 +7,4 @@ parameters:
         - app
         - database/factories
         - database/seeders
-    ignoreErrors:
-        - "#Static access to instance property(.*)#"
+    ignoreErrors: []
