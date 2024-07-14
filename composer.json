@@ -10,8 +10,10 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.0",
+        "laravel/reverb": "@beta",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "pusher/pusher-php-server": "^7.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.0",
