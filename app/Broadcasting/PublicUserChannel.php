@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Broadcasting;
 
 use App\Models\User;
 
-class PublicUserChannel
+final class PublicUserChannel
 {
     const ROUTE = 'public';
 

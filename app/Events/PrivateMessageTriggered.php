@@ -1,22 +1,26 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Events;
 
-use App\Models\User;
+use App\Broadcasting\PrivateUserChannel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class PrivateMessageTriggered implements ShouldBroadcastNow
+final class PrivateMessageTriggered implements ShouldBroadcastNow
 {
+    const NAME = 'PrivateEvent';
+
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
-    public function __construct(public User $user, public string $message = "Hello private channel")
+    public function __construct(public string $message = 'Hello private channel')
     {
         //
     }
@@ -29,12 +33,12 @@ class PrivateMessageTriggered implements ShouldBroadcastNow
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel("users.{$this->user->id}"),
+            new PrivateChannel(PrivateUserChannel::ROUTE),
         ];
     }
 
     public function broadcastAs(): string
     {
-        return 'PrivateEvent';
+        return self::NAME;
     }
 }

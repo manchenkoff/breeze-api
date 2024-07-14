@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Events;
 
 use App\Broadcasting\PublicUserChannel;
@@ -9,14 +11,16 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class PublicMessageTriggered implements ShouldBroadcastNow
+final class PublicMessageTriggered implements ShouldBroadcastNow
 {
+    const NAME = 'PublicEvent';
+
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
-    public function __construct(public string $message = "Hello public channel")
+    public function __construct(public string $message = 'Hello public channel')
     {
         //
     }
@@ -35,6 +39,6 @@ class PublicMessageTriggered implements ShouldBroadcastNow
 
     public function broadcastAs(): string
     {
-        return 'PublicEvent';
+        return self::NAME;
     }
 }
