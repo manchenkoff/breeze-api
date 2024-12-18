@@ -4,11 +4,22 @@ vars:
   SAIL: ./vendor/bin/sail
 
 tasks:
+  composer-install:
+    desc: Install Composer dependencies
+    silent: true
+    cmds:
+      - test -d 'vendor' && echo "Vendor directory exists, skip" || docker run --rm
+        -u "$(id -u):$(id -g)"
+        -v "$(pwd):/var/www/html"
+        -w /var/www/html
+        laravelsail/php82-composer:latest
+        composer install --ignore-platform-reqs
+
   build:
     desc: Build Laravel Sail application image
     cmds:
       - test -f '.env' && echo "Env file exists, skip" || cp .env.example .env
-      - task: get-sail
+      - task: composer-install
       - task: run
         vars: { cmd: build --no-cache }
       - task: start
@@ -152,13 +163,3 @@ tasks:
       vars: [cmd]
     cmds:
       - "{{ .SAIL }} {{ .cmd }}"
-
-  composer-install:
-    desc: Get Laravel Sail
-    cmds:
-      - test -f 'vendor/bin/sail' && echo "Sail script exists, skip" || docker run --rm
-        -u "$(id -u):$(id -g)"
-        -v "$(pwd):/var/www/html"
-        -w /var/www/html
-        laravelsail/php84-composer:latest
-        composer install --ignore-platform-reqs
