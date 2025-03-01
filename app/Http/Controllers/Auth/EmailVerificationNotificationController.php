@@ -19,9 +19,12 @@ final class EmailVerificationNotificationController extends Controller
         /** @var \App\Models\User $user */
         $user = $request->user();
 
+        /** @var string $frontendUrl */
+        $frontendUrl = config('app.frontend_url');
+
         if ($user->hasVerifiedEmail()) {
             return redirect()->intended(
-                config('app.frontend_url') . '/dashboard?verified=1'
+                $frontendUrl . '/dashboard?verified=1'
             );
         }
 

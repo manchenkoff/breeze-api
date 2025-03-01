@@ -31,8 +31,8 @@ final class TriggerEvent extends Command
     {
         $event =
             $this->option('private')
-            ? new PrivateMessageTriggered()
-            : new PublicMessageTriggered();
+            ? new PrivateMessageTriggered
+            : new PublicMessageTriggered;
 
         broadcast($event);
     }
