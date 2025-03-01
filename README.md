@@ -19,7 +19,7 @@ To work with this project you will also need to install the following software:
 
 ## Features
 
--   Laravel 11
+-   Laravel 12
 -   Breeze API with Sanctum
 -   Laravel Pint code formatter
 -   Larastan static analysis rules
