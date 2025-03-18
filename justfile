@@ -10,7 +10,7 @@ help:
 
 # Install Composer dependencies (w/o Sail)
 [group('project')]
-composer-install:
+_composer-install:
     test -d 'vendor' && echo "Vendor directory exists, skip" || docker run --rm \
     -u "$(id -u):$(id -g)" \
     -v "$(pwd):/var/www/html" \
@@ -22,7 +22,7 @@ composer-install:
 [group('project')]
 build:
     test -f '.env' && echo "Env file exists, skip" || cp .env.example .env
-    just composer-install
+    just _composer-install
     {{sail}} build --no-cache
     just start
     just deps
@@ -49,7 +49,7 @@ stop:
 purge:
     {{sail}} down -v
 
-# Install Composer dependencies (w/ Sail)
+# Install Composer dependencies
 [group('sail')]
 deps:
     {{sail}} composer install
