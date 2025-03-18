@@ -15,7 +15,7 @@ To work with this project you will also need to install the following software:
 
 -   [Git](https://git-scm.com/)
 -   [Docker](https://docker.com/)
--   [Taskfile](https://taskfile.dev/)
+-   [Justfile](https://just.systems/)
 
 ## Features
 
@@ -36,26 +36,26 @@ git clone https://github.com/manchenkoff/breeze-api
 2. Build the project and install dependencies:
 
 ```bash
-task build
+just build
 ```
 
 3. Start the project:
 
 ```bash
-task start
+just start
 ```
 
 Once the project is started, you can access it at [http://localhost](http://localhost).
 
 ## Development
 
-To get more details about available commands in `taskfile`, run the following command:
+To get more details about available commands in `justfile`, run the following command:
 
 ```bash
-task -a
+just help
 ```
 
-To auto-format your code use `task fmt` command and also `task lint` to check the code quality by running Larastan checks.
+To auto-format your code use `just fmt` command and also `just lint` to check the code quality by running Larastan checks.
 
 ## Production
 
