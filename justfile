@@ -69,9 +69,9 @@ schedule:
 queue:
     {{sail}} artisan queue:listen -v --timeout=0
 
-# Run command inside of Laravel Sail PHP container, e.g. [just sail 'artisan help']
+# Run command inside of Laravel Sail PHP container, e.g. [just sail artisan help]
 [group('sail')]
-sail command:
+sail +command:
     {{sail}} {{command}}
 
 # Optimize Laravel cache
