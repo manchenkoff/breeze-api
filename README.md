@@ -78,3 +78,7 @@ If you have multiple frontend applications (e.g. public and admin apps), you can
 ```dotenv
 SANCTUM_STATEFUL_DOMAINS=domain.com,backoffice.domain.com,admin.domain.com
 ```
+
+### Powered by
+[![JetBrains logo.](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg)](https://jb.gg/OpenSource)
+
